@@ -1,16 +1,24 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import PlaylistPage from './pages/PlaylistPage';
+import React from 'react'
+import Sidebar from './components/Sidebar/Sidebar'
+import Player from './components/Player/Player'
+import Display from './components/Display/Display'
+import { useContext } from 'react'
+import { PlayerContext } from './context/PlayerContext'
 
-function App() {
+const App = () => {
+
+  const { audioRef, track } = useContext(PlayerContext);
+
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/playlist/:id" element={<PlaylistPage />} />
-      </Routes>
-    </Router>
-  );
+    <div className='h-screen bg-black'>
+      <div className='h-[90%] flex'>
+        <Sidebar />
+        <Display />
+      </div>
+      <Player />
+      <audio ref={audioRef} preload="auto" src={track.file}></audio>
+    </div>
+  )
 }
 
-export default App;
+export default App
