@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { playlists } from "../songsData";
-import Player from "../Player";
+import { playlists } from "../data/songsData";
+import Player from "../components/Player";
 import { useState } from "react";
 
 export default function PlaylistPage() {
